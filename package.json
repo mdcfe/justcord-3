@@ -1,0 +1,19 @@
+{
+  "name": "justcord",
+  "version": "0.0.1",
+  "description": "A JC3MP-Discord bridge",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/md678685/justcord-3.git",
+    "type": "git"
+  },
+  "author": "md678685 <mathew678@hotmail.co.uk>",
+  "license": "MIT",
+  "dependencies": {
+    "eris": "^0.5.1"
+  },
+  "jcmp_dependencies": [
+    "chat",
+    "command-manager"
+  ]
+}
