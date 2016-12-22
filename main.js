@@ -25,7 +25,7 @@ global.justcord = {
 }
 
 // Polyfills
-if (typeof (jcmp.events) === undefined || jcmp.events === null) jcmp.events = events;
+if (typeof jcmp.events == undefined || jcmp.events == null) jcmp.events = events;
 
 // Event Handlers
 const jcevents = require("./jcevents.js");
