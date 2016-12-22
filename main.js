@@ -32,6 +32,7 @@ const jcevents = require("./jcevents.js");
 
 eris.on("ready", () => {
     console.log("Justcord ready!"); // TODO: Add logging utility functions
+    eris.createMessage(config.eris.id, "Justcord connected to the guild successfully!")
 });
 
 eris.connect();
