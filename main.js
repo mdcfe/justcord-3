@@ -19,7 +19,7 @@ const eris = new ErisClient(config.eris.token);
 
 // Globally-Exposed Variables
 global.justcord = {
-    chatManager: events.Call('get_chat')[0],
+    chat: events.Call('get_chat')[0],
     config: config,
     eris: eris
 }
@@ -29,6 +29,7 @@ if (typeof (jcmp.events) === undefined || jcmp.events === null) jcmp.events = ev
 
 // Event Handlers
 const jcevents = require("./jcevents.js");
+const erisevents = require("./erisevents.js");
 
 eris.on("ready", () => {
     console.log("Justcord ready!"); // TODO: Add logging utility functions
