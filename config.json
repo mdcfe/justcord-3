@@ -1,5 +1,6 @@
 {
     "eris": {
-        "token": "TOKEN GOES HERE"
+        "token": "TOKEN GOES HERE",
+        "id": "CHANNEL ID GOES HERE"
     }
 }

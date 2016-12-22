@@ -8,13 +8,24 @@
  * Requires the chat and command manager packages.
  */
 
+// Config
 const config = require("./config.json");
 
+// External Modules
 const ErisClient = require("eris");
 
+// Initialise Eris
 const eris = new ErisClient(config.eris.token);
 
-global.chatManager = events.Call('get_chat')[0];
+// Globally-Exposed Variables
+global.justcord = {
+    chatManager: events.Call('get_chat')[0],
+    config: config,
+    eris: eris
+}
+
+// Event Handlers
+const jcevents = require("./jcevents.js");
 
 eris.on("ready", () => {
     console.log("Justcord ready!"); // TODO: Add logging utility functions
