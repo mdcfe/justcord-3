@@ -18,6 +18,6 @@
   ],
   "scripts": {
     "test": "echo 'Not yet implemented, use script \"run_server\" to start emulator' && exit 1",
-    "run_server": "cp ./*.js jcmpserver/packages/justcord && cd jcmpserver && jcmp-server && rm jcmpserver/packages/justcord/*.js"
+    "run_server": "cp ./*.js jcmpserver/packages/justcord && cd jcmpserver && jcmp-server && rm packages/justcord/*.js"
   }
 }
