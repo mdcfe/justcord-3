@@ -2,7 +2,7 @@
   "name": "justcord",
   "version": "0.0.1",
   "description": "A JC3MP-Discord bridge",
-  "main": "index.js",
+  "main": "main.js",
   "repository": {
     "url": "https://github.com/md678685/justcord-3.git",
     "type": "git"
@@ -15,5 +15,9 @@
   "jcmp_dependencies": [
     "chat",
     "command-manager"
-  ]
+  ],
+  "scripts": {
+    "test": "echo 'Not yet implemented, use script \"run_server\" to start emulator' && exit 1",
+    "run_server": "cp ./*.js jcmpserver/packages/justcord && cd jcmpserver && jcmp-server && rm jcmpserver/packages/justcord/*.js"
+  }
 }
