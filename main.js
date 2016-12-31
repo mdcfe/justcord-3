@@ -5,7 +5,7 @@
  * Licensed under the MIT license.
  *
  * Uses Eris, a Discord library licensed under the MIT license.
- * Requires the chat and command manager packages.
+ * Requires the chat package.
  */
 
 // Config

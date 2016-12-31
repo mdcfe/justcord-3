@@ -1,6 +1,6 @@
 {
   "name": "justcord",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A JC3MP-Discord bridge",
   "main": "main.js",
   "repository": {
@@ -13,8 +13,7 @@
     "eris": "^0.5.1"
   },
   "jcmp_dependencies": [
-    "chat",
-    "command-manager"
+    "chat"
   ],
   "scripts": {
     "test": "echo 'Not yet implemented, use script \"run_server\" to start emulator' && exit 1",
