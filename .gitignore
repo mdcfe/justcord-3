@@ -38,3 +38,6 @@ jspm_packages
 
 # JC3MP server
 jcmpserver
+
+# Typings
+typings/

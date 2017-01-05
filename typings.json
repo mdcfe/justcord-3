@@ -1,0 +1,8 @@
+{
+  "globalDependencies": {
+    "jcmp.client": "github:SK83RJOSH/types-jcmp/lib/jcmp.client.d.ts",
+    "jcmp.server": "github:SK83RJOSH/types-jcmp/lib/jcmp.server.d.ts",
+    "jcmp.shared": "github:SK83RJOSH/types-jcmp/lib/jcmp.shared.d.ts",
+    "jcmp": "github:SK83RJOSH/types-jcmp/index.d.ts"
+  }
+}
