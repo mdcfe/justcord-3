@@ -2,6 +2,11 @@ const eris = justcord.eris;
 const config = justcord.config;
 const chat = justcord.chat;
 
+eris.on("ready", () => {
+    console.log("Justcord ready!"); // TODO: Add logging utility functions
+    eris.createMessage(config.eris.id, "Justcord connected to the guild successfully!")
+});
+
 eris.on("messageCreate", (message) => {
     if (message.channel.id == config.eris.id) {
         chat.broadcast(`${message.member.nick}: ${message.content}`);
