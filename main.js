@@ -19,7 +19,7 @@ const eris = new ErisClient(config.eris.token);
 
 // Globally-Exposed Variables
 global.justcord = {
-    chat: events.Call('get_chat')[0],
+    chat: jcmp.events.Call('get_chat')[0],
     config: config,
     eris: eris
 }
