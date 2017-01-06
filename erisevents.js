@@ -4,7 +4,7 @@ const chat = justcord.chat;
 
 eris.on("ready", () => {
     console.log("Justcord ready!"); // TODO: Add logging utility functions
-    eris.createMessage(config.eris.id, "Justcord connected to the guild successfully!")
+    eris.createMessage(config.eris.id, "Server connected to the guild successfully!")
 });
 
 eris.on("messageCreate", (message) => {
