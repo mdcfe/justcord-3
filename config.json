@@ -2,5 +2,13 @@
     "eris": {
         "token": "TOKEN GOES HERE",
         "id": "CHANNEL ID GOES HERE"
+    },
+    "formatting": {
+        "discordToGame": "${nick}: ${message}",
+        "gameToDiscord": {
+            "chat": "${username}: ${message}",
+            "connect": "${username} connected to the server.",
+            "disconnect": "${username} disconnected from the server."
+        }
     }
 }
