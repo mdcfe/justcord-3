@@ -4,7 +4,7 @@ const chat = justcord.chat;
 
 // Chat
 jcmp.events.Add("chat_message", (player, message) => {
-    if (!message.beginsWith("/")) eris.createMessage(config.eris.id, `${player.name}: ${message}`);
+    eris.createMessage(config.eris.id, `${player.name}: ${message}`);
 });
 
 // JC3MP
