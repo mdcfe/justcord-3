@@ -4,13 +4,22 @@ const chat = justcord.chat;
 
 const evalTemplate = require("./util.js").evalTemplate;
 
-function formatToDiscord(format, player, message) {
+function formatChat(format, player, message) {
     let scope = {
         username: player.name,
         message,
         player
     };
     return evalTemplate(format, scope);
+}
+
+function formatDeath(player, killer) {
+    let scope = {
+        killer,
+        player,
+        reason
+    };
+    return evalTemplate(config.formatting.gameToDiscord.death, scope);
 }
 
 function formatTopic() {
@@ -32,16 +41,20 @@ function setTopic(topic) {
 
 // Chat
 jcmp.events.Add("chat_message", (player, message) => {
-    sendDiscordMessage(formatToDiscord(config.formatting.gameToDiscord.chat, player, message));
+    sendDiscordMessage(formatChat(config.formatting.gameToDiscord.chat, player, message));
 });
 
 // JC3MP
 jcmp.events.Add("ClientConnected", client => {
-    sendDiscordMessage(formatToDiscord(config.formatting.gameToDiscord.connect, client));
+    sendDiscordMessage(formatChat(config.formatting.gameToDiscord.connect, client));
 });
 
 jcmp.events.Add("ClientDisconnected", (client, reason) => {
-    sendDiscordMessage(formatToDiscord(config.formatting.gameToDiscord.disconnect, client));
+    sendDiscordMessage(formatChat(config.formatting.gameToDiscord.disconnect, client));
+});
+
+jcmp.events.Add("PlayerDeath", (player, killer, reason) => {
+    sendDiscordMessage(formatDeath(palyer, killer, reason));
 });
 
 // Topic updater
