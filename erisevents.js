@@ -9,8 +9,7 @@ eris.on("ready", () => {
 
 eris.on("messageCreate", (message) => {
     if (message.channel.id == config.eris.id && message.member.id != eris.user.id) {
-        let name = message.member.nick;
-        if (!name) name = message.member.user.username;
+        let name = message.member.nick || message.member.user.username;
         chat.broadcast(`${name}: ${message.content}`);
         console.log(`Discord: ${name}: ${message.content}`);
     }
