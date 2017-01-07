@@ -9,8 +9,17 @@ function formatToDiscord(format, player, message) {
         username: player.name,
         message,
         player
-    }
+    };
     return evalTemplate(format, scope);
+}
+
+function formatTopic() {
+    let scope = {
+        players: jcmp.players.length,
+        maxPlayers: JSON.parse(jcmp.server.config).maxPlayers,
+        jcmp
+    };
+    return evalTemplate(config.formatting.gameToDiscord.topic, scope);
 }
 
 function sendDiscordMessage(message) {
@@ -30,3 +39,8 @@ jcmp.events.Add('ClientConnected', client => {
 jcmp.events.Add('ClientDisconnected', (client, reason) => {
     sendDiscordMessage(formatToDiscord(config.formatting.gameToDiscord.disconnect, client));
 });
+
+// Topic updater
+setTimeout(() => {
+    eris.editChannel(config.eris.id, { topic: formatTopic() });
+}, config.eris.topicTimeout);

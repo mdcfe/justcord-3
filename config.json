@@ -2,6 +2,7 @@
     "eris": {
         "token": "TOKEN GOES HERE",
         "id": "CHANNEL ID GOES HERE",
+        "topicTimeout": 10000,
         "playing": "Just Cause 3 Multiplayer"
     },
     "formatting": {
@@ -10,6 +11,7 @@
             "colour": "7289DA"
         },
         "gameToDiscord": {
+            "topic": "Join the server at xxx.xxx.xxx.xxx:port | ${players}/${maxPlayers} players currently online | Current tick rate: ${jcmp.server.currentTickRate}",
             "chat": "${username}: ${message}",
             "connect": "${username} connected to the server.",
             "disconnect": "${username} disconnected from the server."
