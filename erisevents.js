@@ -2,7 +2,9 @@ const eris = justcord.eris;
 const config = justcord.config;
 const chat = justcord.chat;
 
-const evalTemplate = require("./util.js").evalTemplate;
+const utils = require("./util.js");
+const evalTemplate = utils.evalTemplate;
+const hexToRGB = utils.hexToRGB;
 
 function formatFromDiscord(format, _message) {
     let scope = {
@@ -22,8 +24,8 @@ eris.on("ready", () => {
 
 eris.on("messageCreate", (_message) => {
     if (_message.channel.id == config.eris.id && _message.member.id != eris.user.id) {
-        let message = formatFromDiscord(config.formatting.discordToGame, _message);
-        chat.broadcast(message);
+        let message = formatFromDiscord(config.formatting.discordToGame.chat, _message);
+        chat.broadcast(message, hexToRGB(config.formatting.discordToGame.colour));
         console.log(`Discord: ${message}`);
     }
 });

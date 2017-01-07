@@ -4,7 +4,10 @@
         "id": "CHANNEL ID GOES HERE"
     },
     "formatting": {
-        "discordToGame": "${nick}: ${message}",
+        "discordToGame": {
+            "chat": "${nick}: ${message}",
+            "colour": "7289DA"
+        },
         "gameToDiscord": {
             "chat": "${username}: ${message}",
             "connect": "${username} connected to the server.",
