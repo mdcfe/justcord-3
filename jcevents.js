@@ -26,21 +26,25 @@ function sendDiscordMessage(message) {
     eris.createMessage(config.eris.id, message);
 }
 
+function setTopic(topic) {
+    eris.editChannel(config.eris.id, { topic });
+}
+
 // Chat
 jcmp.events.Add("chat_message", (player, message) => {
     sendDiscordMessage(formatToDiscord(config.formatting.gameToDiscord.chat, player, message));
 });
 
 // JC3MP
-jcmp.events.Add('ClientConnected', client => {
+jcmp.events.Add("ClientConnected", client => {
     sendDiscordMessage(formatToDiscord(config.formatting.gameToDiscord.connect, client));
 });
 
-jcmp.events.Add('ClientDisconnected', (client, reason) => {
+jcmp.events.Add("ClientDisconnected", (client, reason) => {
     sendDiscordMessage(formatToDiscord(config.formatting.gameToDiscord.disconnect, client));
 });
 
 // Topic updater
 setTimeout(() => {
-    eris.editChannel(config.eris.id, { topic: formatTopic() });
+    setTopic(formatTopic());
 }, config.eris.topicTimeout);
