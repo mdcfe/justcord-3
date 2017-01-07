@@ -1,7 +1,8 @@
 {
     "eris": {
         "token": "TOKEN GOES HERE",
-        "id": "CHANNEL ID GOES HERE"
+        "id": "CHANNEL ID GOES HERE",
+        "playing": "Just Cause 3 Multiplayer"
     },
     "formatting": {
         "discordToGame": {
