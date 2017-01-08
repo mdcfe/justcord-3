@@ -54,7 +54,7 @@ jcmp.events.Add("ClientDisconnected", (client, reason) => {
 });
 
 jcmp.events.Add("PlayerDeath", (player, killer, reason) => {
-    sendDiscordMessage(formatDeath(palyer, killer, reason));
+    sendDiscordMessage(formatDeath(player, killer, reason));
 });
 
 // Topic updater
