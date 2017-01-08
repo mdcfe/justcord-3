@@ -58,6 +58,6 @@ jcmp.events.Add("PlayerDeath", (player, killer, reason) => {
 });
 
 // Topic updater
-setTimeout(() => {
+if (config.eris.topicTimeout > 0) setTimeout(() => {
     setTopic(formatTopic());
 }, config.eris.topicTimeout);
