@@ -15,6 +15,7 @@ function formatChat(format, player, message) {
 
 function formatDeath(player, killer, reason) {
     let scope = {
+        username: player.name,
         killer,
         player,
         reason
