@@ -13,7 +13,7 @@ function formatChat(format, player, message) {
     return evalTemplate(format, scope);
 }
 
-function formatDeath(player, killer) {
+function formatDeath(player, killer, reason) {
     let scope = {
         killer,
         player,
