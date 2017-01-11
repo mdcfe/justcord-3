@@ -13,7 +13,7 @@
         "gameToDiscord": {
             "topic": "Join the server at xxx.xxx.xxx.xxx:port | ${players}/${maxPlayers} players currently online | Current tick rate: ${jcmp.server.currentTickRate}",
             "chat": "${username}: ${message}",
-            "death": "${username} ${(killer.name ? \"was killed by \" + killer.name : \"died\")}",
+            "death": "${username} ${(killer && killer.name ? \"was killed by \" + killer.name : \"died\")}",
             "connect": "${username} connected to the server.",
             "disconnect": "${username} disconnected from the server."
         }
