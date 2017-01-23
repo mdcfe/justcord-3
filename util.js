@@ -1,6 +1,12 @@
 function evalTemplate(template, scope) {
     with (scope) {
-        return eval(`\`${template.replace(/`/g, '\\`')}\``);
+        try {
+            return eval(`\`${template.replace(/`/g, '\\`')}\``);
+        } catch (e) {
+            console.log("Error encountered while evaluating a template:");
+            console.log(`Message: ${error.message}`);
+            console.log(`Stack trace: \n${error.stack}`);
+        }
     }
 }
 
