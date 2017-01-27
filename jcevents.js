@@ -5,7 +5,7 @@ const chat = justcord.chat;
 const evalTemplate = require("./util.js").evalTemplate;
 
 function formatChat(format, player, message) {
-    let scope = {
+    const scope = {
         username: player.name,
         message,
         player
@@ -14,7 +14,7 @@ function formatChat(format, player, message) {
 }
 
 function formatDeath(player, killer, reason) {
-    let scope = {
+    const scope = {
         username: player.name,
         killer,
         player,
@@ -24,7 +24,7 @@ function formatDeath(player, killer, reason) {
 }
 
 function formatTopic() {
-    let scope = {
+    const scope = {
         players: jcmp.players.length,
         maxPlayers: JSON.parse(jcmp.server.config).maxPlayers,
         jcmp
@@ -46,7 +46,7 @@ jcmp.events.Add("chat_message", (player, message) => {
 });
 
 // JC3MP
-jcmp.events.Add("ClientConnected", client => {
+jcmp.events.Add("ClientConnected", (client) => {
     sendDiscordMessage(formatChat(config.formatting.gameToDiscord.connect, client));
 });
 
@@ -59,6 +59,8 @@ jcmp.events.Add("PlayerDeath", (player, killer, reason) => {
 });
 
 // Topic updater
-if (config.eris.topicTimeout > 0) setInterval(() => {
-    setTopic(formatTopic());
-}, config.eris.topicTimeout);
+if (config.eris.topicTimeout > 0) {
+    setInterval(() => {
+        setTopic(formatTopic());
+    }, config.eris.topicTimeout);
+}

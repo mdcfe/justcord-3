@@ -20,9 +20,9 @@ const eris = new ErisClient(config.eris.token);
 // Globally-Exposed Variables
 global.justcord = {
     chat: jcmp.events.Call('get_chat')[0],
-    config: config,
-    eris: eris
-}
+    config,
+    eris
+};
 
 // Event Handlers
 const jcevents = require("./jcevents.js");

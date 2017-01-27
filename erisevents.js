@@ -3,11 +3,12 @@ const config = justcord.config;
 const chat = justcord.chat;
 
 const utils = require("./util.js");
+
 const evalTemplate = utils.evalTemplate;
 const hexToRGB = utils.hexToRGB;
 
 function formatFromDiscord(format, _message) {
-    let scope = {
+    const scope = {
         username: _message.member.user.username,
         nick: _message.member.nick || _message.member.user.username,
         channel: _message.channel.name || "Unknown channel",
@@ -24,8 +25,8 @@ eris.on("ready", () => {
 });
 
 eris.on("messageCreate", (_message) => {
-    if (_message.channel.id == config.eris.id && _message.member.id != eris.user.id) {
-        let message = formatFromDiscord(config.formatting.discordToGame.chat, _message);
+    if (_message.channel.id === config.eris.id && _message.member.id !== eris.user.id) {
+        const message = formatFromDiscord(config.formatting.discordToGame.chat, _message);
         chat.broadcast(message, hexToRGB(config.formatting.discordToGame.colour));
         console.log(`Discord: ${message}`);
     }
