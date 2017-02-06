@@ -33,11 +33,15 @@ function formatTopic() {
 }
 
 function sendDiscordMessage(message) {
-    eris.createMessage(config.eris.id, message);
+    eris.createMessage(config.eris.id, message).catch((reason) => {
+        console.log(`Could not send message (reason: ${reason})`);
+    });
 }
 
 function setTopic(topic) {
-    eris.editChannel(config.eris.id, { topic });
+    eris.editChannel(config.eris.id, { topic }).catch((reason) => {
+        console.log(`Could not update topic (reason: ${reason})`);
+    });
 }
 
 // Chat
