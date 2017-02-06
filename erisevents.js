@@ -20,8 +20,12 @@ function formatFromDiscord(format, _message) {
 
 eris.on("ready", () => {
     console.log("Justcord ready!"); // TODO: Add logging utility functions
-    eris.createMessage(config.eris.id, "Server connected to the guild successfully!");
-    eris.editStatus("online", { name: config.eris.playing });
+    eris.createMessage(config.eris.id, "Server connected to the guild successfully!").catch((reason) => {
+        console.log(`Could not send connection message (reason: ${reason})`);
+    });
+    eris.editStatus("online", { name: config.eris.playing }).catch((reason) => {
+        console.log(`Could not update status (reason: ${reason})`);
+    });
 });
 
 eris.on("messageCreate", (_message) => {
