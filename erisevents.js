@@ -23,9 +23,7 @@ eris.on("ready", () => {
     eris.createMessage(config.eris.id, "Server connected to the guild successfully!").catch((reason) => {
         console.log(`Could not send connection message (reason: ${reason})`);
     });
-    eris.editStatus("online", { name: config.eris.playing }).catch((reason) => {
-        console.log(`Could not update status (reason: ${reason})`);
-    });
+    eris.editStatus("online", { name: config.eris.playing });
 });
 
 eris.on("messageCreate", (_message) => {
