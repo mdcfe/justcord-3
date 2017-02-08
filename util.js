@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 function evalTemplate(template, scope) {
     with (scope) {
         try {
@@ -15,7 +17,20 @@ function hexToRGB(hex) {
     return new RGB((bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255);
 }
 
+function loadJSON(path, callback) {
+    fs.readFile(path, (error, data) => {
+        if (error) callback(error, "");
+        callback(null, JSON.parse(data));
+    });
+}
+
+function saveJSON(path, object, callback) {
+    fs.writeFile(path, data, callback);
+}
+
 module.exports = {
     evalTemplate,
-    hexToRGB
+    hexToRGB,
+    loadJSON,
+    saveJSON
 }
