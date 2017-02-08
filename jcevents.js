@@ -23,24 +23,9 @@ function formatDeath(player, killer, reason) {
     return evalTemplate(config.formatting.gameToDiscord.death, scope);
 }
 
-function formatTopic() {
-    const scope = {
-        players: jcmp.players.length,
-        maxPlayers: JSON.parse(jcmp.server.config).maxPlayers,
-        jcmp
-    };
-    return evalTemplate(config.formatting.gameToDiscord.topic, scope);
-}
-
 function sendDiscordMessage(message) {
     eris.createMessage(config.eris.id, message).catch((reason) => {
         console.log(`Could not send message (reason: ${reason})`);
-    });
-}
-
-function setTopic(topic) {
-    eris.editChannel(config.eris.id, { topic }).catch((reason) => {
-        console.log(`Could not update topic (reason: ${reason})`);
     });
 }
 
@@ -61,10 +46,3 @@ jcmp.events.Add("ClientDisconnected", (client, reason) => {
 jcmp.events.Add("PlayerDeath", (player, killer, reason) => {
     sendDiscordMessage(formatDeath(player, killer, reason));
 });
-
-// Topic updater
-if (config.eris.topicTimeout > 0) {
-    setInterval(() => {
-        setTopic(formatTopic());
-    }, config.eris.topicTimeout);
-}

@@ -18,12 +18,34 @@ function formatFromDiscord(format, _message) {
     return evalTemplate(format, scope);
 }
 
+function formatTopic() {
+    const scope = {
+        players: jcmp.players.length,
+        maxPlayers: JSON.parse(jcmp.server.config).maxPlayers,
+        jcmp
+    };
+    return evalTemplate(config.formatting.gameToDiscord.topic, scope);
+}
+
+function setTopic(topic) {
+    eris.editChannel(config.eris.id, { topic }).catch((reason) => {
+        console.log(`Could not update topic (reason: ${reason})`);
+    });
+}
+
 eris.on("ready", () => {
     console.log("Justcord ready!"); // TODO: Add logging utility functions
     eris.createMessage(config.eris.id, "Server connected to the guild successfully!").catch((reason) => {
         console.log(`Could not send connection message (reason: ${reason})`);
     });
     eris.editStatus("online", { name: config.eris.playing });
+
+    // Topic updater
+    if (config.eris.topicTimeout > 0) {
+        setInterval(() => {
+            setTopic(formatTopic());
+        }, config.eris.topicTimeout);
+    }
 });
 
 eris.on("messageCreate", (_message) => {
