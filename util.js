@@ -4,7 +4,7 @@ export function evalTemplate(template, scope) {
     with (scope) {
         try {
             return eval(`\`${template.replace(/`/g, '\\`')}\``);
-        } catch (e) {
+        } catch (error) {
             console.log("Error encountered while evaluating a template:");
             console.log(`Message: ${error.message}`);
             console.log(`Stack trace: \n${error.stack}`);
