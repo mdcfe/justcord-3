@@ -17,5 +17,6 @@
             "connect": "${username} connected to the server.",
             "disconnect": "${username} disconnected from the server."
         }
-    }
+    },
+    "lastUpdated": null
 }
