@@ -10,11 +10,12 @@
 
 // Modules
 import { Client as ErisClient } from "eris";
+import getConfig from "./configHelper";
 import erisEventInit from "./erisevents";
 import jcmpEventInit from "./jcevents";
 
 // Config
-const config = require("./config.json");
+const config = getConfig();
 
 // Initialise Eris
 const eris = new ErisClient(config.eris.token);
