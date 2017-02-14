@@ -1,4 +1,6 @@
-import { evalTemplate, hexToRGB } from "./util";
+const util = require("./util");
+const evalTemplate = util.evalTemplate;
+const hexToRGB = util.hexToRGB;
 
 const eris = justcord.eris;
 const config = justcord.config;
@@ -30,27 +32,26 @@ function setTopic(topic) {
     });
 }
 
-export default function () {
-    eris.on("ready", () => {
-        console.log("Justcord ready!"); // TODO: Add logging utility functions
-        eris.createMessage(config.eris.id, "Server connected to the guild successfully!").catch((reason) => {
-            console.log(`Could not send connection message (reason: ${reason})`);
-        });
-        eris.editStatus("online", { name: config.eris.playing });
-
-        // Topic updater
-        if (config.eris.topicTimeout > 0) {
-            setInterval(() => {
-                setTopic(formatTopic());
-            }, config.eris.topicTimeout);
-        }
+eris.on("ready", () => {
+    console.log("Justcord ready!"); // TODO: Add logging utility functions
+    eris.createMessage(config.eris.id, "Server connected to the guild successfully!").catch((reason) => {
+        console.log(`Could not send connection message (reason: ${reason})`);
     });
+    eris.editStatus("online", { name: config.eris.playing });
 
-    eris.on("messageCreate", (_message) => {
-        if (_message.channel.id === config.eris.id && _message.member.id !== eris.user.id) {
-            const message = formatFromDiscord(config.formatting.discordToGame.chat, _message);
-            chat.broadcast(message, hexToRGB(config.formatting.discordToGame.colour));
-            console.log(`Discord: ${message}`);
-        }
-    });
-}
+    // Topic updater
+    if (config.eris.topicTimeout > 0) {
+        setInterval(() => {
+            setTopic(formatTopic());
+        }, config.eris.topicTimeout);
+    }
+});
+
+eris.on("messageCreate", (_message) => {
+    if (_message.channel.id === config.eris.id && _message.member.id !== eris.user.id) {
+        const message = formatFromDiscord(config.formatting.discordToGame.chat, _message);
+        chat.broadcast(message, hexToRGB(config.formatting.discordToGame.colour));
+        console.log(`Discord: ${message}`);
+    }
+});
+

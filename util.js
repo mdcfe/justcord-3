@@ -1,7 +1,7 @@
 const fs = require("fs");
 
-export function evalTemplate(template, scope) {
-    with (scope) {
+function evalTemplate(template, scope) {
+    with(scope) {
         try {
             return eval(`\`${template.replace(/`/g, '\\`')}\``);
         } catch (error) {
@@ -12,15 +12,22 @@ export function evalTemplate(template, scope) {
     }
 }
 
-export function hexToRGB(hex) {
+function hexToRGB(hex) {
     let bigint = parseInt(hex, 16);
     return new RGB((bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255);
 }
 
-export function loadJSON(path) {
+function loadJSON(path) {
     return JSON.parse(fs.readFileSync(path));
 }
 
-export function saveJSON(path, object) {
+function saveJSON(path, object) {
     return fs.writeFileSync(path, JSON.stringify(object));
+}
+
+module.exports = {
+    evalTemplate,
+    hexToRGB,
+    loadJSON,
+    saveJSON
 }

@@ -8,11 +8,13 @@
  * Requires the chat package.
  */
 
-// Modules
-import { Client as ErisClient } from "eris";
-import getConfig from "./configHelper";
-import erisEventInit from "./erisevents";
-import jcmpEventInit from "./jcevents";
+// External Modules
+const ErisClient = require("eris").Client;
+
+// Listeners
+const util = require("./util");
+
+const getConfig = require("./configHelper");
 
 // Config
 const config = getConfig();
@@ -28,7 +30,7 @@ global.justcord = {
 };
 
 // Event Handlers
-jcmpEventInit();
-erisEventInit();
+require("./erisevents");
+require("./jcevents");
 
 eris.connect();
