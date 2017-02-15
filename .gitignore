@@ -41,3 +41,8 @@ jcmpserver
 
 # Typings
 typings/
+
+# Editor-specific
+.vscode/
+.idea/
+*.iml
