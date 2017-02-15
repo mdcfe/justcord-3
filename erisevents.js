@@ -54,4 +54,3 @@ eris.on("messageCreate", (_message) => {
         console.log(`Discord: ${message}`);
     }
 });
-
