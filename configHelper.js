@@ -7,6 +7,7 @@ const util = require("./util");
 
 const loadJSON = util.loadJSON;
 const saveJSON = util.saveJSON;
+const deepMerge = util.deepMerge;
 
 const defaultConfig = {
     eris: {
@@ -33,7 +34,7 @@ const defaultConfig = {
 function getFullConfig() {
     const configPath = path.join(__dirname, "./config.json");
     const loadedConfig = loadJSON(configPath);
-    const fullConfig = Object.assign(defaultConfig, loadedConfig);
+    const fullConfig = deepMerge(defaultConfig, loadedConfig);
 
     if (fullConfig.length > loadedConfig.length) {
         fullConfig.lastUpdated = (new Date()).toUTCString();
