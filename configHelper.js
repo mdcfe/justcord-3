@@ -37,8 +37,8 @@ function getFullConfig() {
 
     if (fullConfig.length > loadedConfig.length) {
         fullConfig.lastUpdated = (new Date()).toUTCString();
-        saveJSON(configPath, fullConfig);
     }
+    saveJSON(configPath, fullConfig);
 
     return fullConfig;
 }
