@@ -27,7 +27,7 @@ const defaultConfig = {
     }
 };
 
-export default function getFullConfig() {
+function getFullConfig() {
     const loadedConfig = loadJSON("./config.json");
     const fullConfig = Object.assign(defaultConfig, loadedConfig);
 
@@ -38,3 +38,6 @@ export default function getFullConfig() {
 
     return fullConfig;
 }
+
+module.exports = getFullConfig;
+module.exports.defaultConfig = defaultConfig;
