@@ -22,7 +22,7 @@ function loadJSON(path) {
 }
 
 function saveJSON(path, object) {
-    return fs.writeFileSync(path, JSON.stringify(object));
+    return fs.writeFileSync(path, JSON.stringify(object, null, 4));
 }
 
 module.exports = {
