@@ -7,7 +7,6 @@ const util = require("./util");
 
 const loadJSON = util.loadJSON;
 const saveJSON = util.saveJSON;
-const deepMerge = util.deepMerge;
 
 const defaultConfig = {
     eris: {
@@ -34,9 +33,23 @@ const defaultConfig = {
 function getFullConfig() {
     const configPath = path.join(__dirname, "./config.json");
     const loadedConfig = loadJSON(configPath);
-    const fullConfig = deepMerge(defaultConfig, loadedConfig);
 
-    if (fullConfig.length > loadedConfig.length) {
+    const fullConfig = { eris: {}, formatting: { discordToGame: {}, gameToDiscord: {} } };
+    fullConfig.eris = Object.assign(
+        defaultConfig.eris,
+        loadedConfig.eris);
+    fullConfig.formatting.discordToGame = Object.assign(
+        defaultConfig.formatting.discordToGame,
+        loadedConfig.formatting.discordToGame);
+    fullConfig.formatting.gameToDiscord = Object.assign(
+        defaultConfig.formatting.gameToDiscord,
+        loadedConfig.formatting.gameToDiscord);
+
+    if (fullConfig.length > loadedConfig.length
+        || fullConfig.eris.length > loadedConfig.eris.length
+        || fullConfig.formatting.discordToGame.length > loadedConfig.formatting.discordToGame.length
+        || fullConfig.formatting.gameToDiscord.length > loadedConfig.formatting.gameToDiscord.length
+    ) {
         fullConfig.lastUpdated = (new Date()).toUTCString();
     }
     saveJSON(configPath, fullConfig);
