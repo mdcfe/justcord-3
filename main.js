@@ -17,7 +17,7 @@ const util = require("./util");
 const getConfig = require("./configHelper");
 
 // Config
-const config = getConfig();
+const config = require("./config.json");
 
 // Initialise Eris
 const eris = new ErisClient(config.eris.token);
