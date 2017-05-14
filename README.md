@@ -7,7 +7,7 @@ A JC3MP server package to bridge your text chat and Discord chat! This should ju
 3. Go to the new `justcord-3` folder and then run `yarn install` or `npm install`.
 4. Create a new app on the [Discord Developers site](https://discordapp.com/developers/applications/me).
 5. Create a **bot user** after creating the app.
-6. Use [this site](http://scarsz.tech/authorize/) to generate a link to add your bot to your guild, pasting your client ID from the previous step.
+6. Use [this site](http://scarsz.me/authorize/) to generate a link to add your bot to your guild, pasting your client ID from the previous step.
 7. Paste the *token* from step 3 into the `config.json`.
 8. In Discord, turn on Developer Mode in *User Settings > Appearance*.
 9. Right-click on the channel you want to link and click *Copy ID*.
