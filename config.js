@@ -28,7 +28,8 @@ const defaultConfig = {
             connect: "**${username} connected to the server.**",
             disconnect: "**${username} disconnected from the server.**"
         }
-    }
+    },
+    version: "0.1.0",
 };
 
 function getFullConfig() {
