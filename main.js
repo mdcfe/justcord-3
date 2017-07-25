@@ -14,10 +14,8 @@ const ErisClient = require("eris").Client;
 // Listeners
 const util = require("./util");
 
-const getConfig = require("./configHelper");
-
 // Config
-const config = require("./config.json");
+const config = require("./config")();
 
 // Initialise Eris
 const eris = new ErisClient(config.eris.token);
