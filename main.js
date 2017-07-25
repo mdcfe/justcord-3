@@ -20,7 +20,16 @@ const log = debug("justcord");
 log.enabled = true;
 
 // Config
-const config = require("./config")();
+const configHelper = require("./config");
+
+let conf;
+try {
+    conf = configHelper();
+} catch (e) {
+    log(e);
+}
+
+const config = conf || configHelper.defaultConfig;
 
 // Initialise Eris
 const eris = new ErisClient(config.eris.token);
