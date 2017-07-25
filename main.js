@@ -10,9 +10,14 @@
 
 // External Modules
 const ErisClient = require("eris").Client;
+const debug = require("debug");
 
 // Listeners
 const util = require("./util");
+
+// Logging
+const log = debug("justcord");
+log.enabled = true;
 
 // Config
 const config = require("./config")();
@@ -24,7 +29,8 @@ const eris = new ErisClient(config.eris.token);
 global.justcord = {
     chat: jcmp.events.Call("get_chat")[0],
     config,
-    eris
+    eris,
+    log
 };
 
 // Event Handlers
