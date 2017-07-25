@@ -25,49 +25,9 @@ function saveJSON(path, object) {
     return fs.writeFileSync(path, JSON.stringify(object, null, 4));
 }
 
-function isMergeableObject(object) {
-    return object && typeof object == "object";
-}
-
-function deepClone(object) {
-    if (!object || typeof object !== 'object') return object;
-
-    var output = object.constructor();
-    for (var key in object) {
-        output[key] = deepClone(object[key]);
-    }
-
-    return output;
-}
-
-function deepMerge(target, ...sources) {
-    if (sources.length < 1) return target;
-    const output = deepClone(target);
-    const source = sources.shift();
-
-    if (isMergeableObject(output) && isMergeableObject(source)) {
-        for (const key in source) {
-            if (isMergeableObject(source[key])) {
-                if (!output[key]) Object.assign(output, { [key]: {} });
-                deepMerge(output[key], source[key]);
-            } else if (Array.isArray(source[key])) {
-                if (!output[key]) Object.assign(output, { [key]: [] });
-                output[key] = output[key].concat(source[key]).unique();
-            } else {
-                Object.assign(output, { [key]: source[key] });
-            }
-        }
-    }
-
-    return deepMerge(target, sources);
-}
-
 module.exports = {
     evalTemplate,
     hexToRGB,
     loadJSON,
     saveJSON,
-    isMergeableObject,
-    deepClone,
-    deepMerge
 }

@@ -10,7 +10,8 @@
   "author": "md678685 <mathew678@hotmail.co.uk>",
   "license": "MIT",
   "dependencies": {
-    "eris": "^0.5.1"
+    "eris": "^0.5.1",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "eslint": "3.13.0",
