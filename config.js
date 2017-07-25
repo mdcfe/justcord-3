@@ -37,6 +37,8 @@ function getFullConfig() {
     const configPath = path.join(__dirname, "./config.json");
     const loadedConfig = loadJSON(configPath);
 
+    if (!util.isVersionCompatible(defaultConfig.version, loadedConfig.version)) throw new Error("Config files are not compatible. Please update your configs.");
+
     const fullConfig = _.merge({}, defaultConfig, loadedConfig);
     saveJSON(configPath, fullConfig);
 
