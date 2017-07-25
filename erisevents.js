@@ -1,11 +1,5 @@
-const util = require("./util");
 const evalTemplate = util.evalTemplate;
 const hexToRGB = util.hexToRGB;
-
-const eris = justcord.eris;
-const config = justcord.config;
-const chat = justcord.chat;
-const log = justcord.log;
 
 let firstConnect = true;
 

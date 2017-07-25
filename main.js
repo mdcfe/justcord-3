@@ -35,12 +35,11 @@ const config = conf || configHelper.defaultConfig;
 const eris = new ErisClient(config.eris.token);
 
 // Globally-Exposed Variables
-global.justcord = {
-    chat: jcmp.events.Call("get_chat")[0],
-    config,
-    eris,
-    log
-};
+global.chat = jcmp.events.Call("get_chat")[0];
+global.config = config;
+global.eris = eris;
+global.log = log;
+global.util = util;
 
 // Event Handlers
 require("./erisevents");

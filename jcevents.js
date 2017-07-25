@@ -1,9 +1,4 @@
-const util = require("./util");
 const evalTemplate = util.evalTemplate;
-
-const eris = justcord.eris;
-const config = justcord.config;
-const chat = justcord.chat;
 
 function formatChat(format, player, message) {
     const scope = {
