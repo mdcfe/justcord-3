@@ -21,7 +21,7 @@ function formatDeath(player, killer, reason) {
 
 function sendDiscordMessage(message) {
     eris.createMessage(config.eris.id, message).catch((reason) => {
-        console.log(`Could not send message (reason: ${reason})`);
+        log(`Could not send message (reason: ${reason})`);
     });
 }
 
