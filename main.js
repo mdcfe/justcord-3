@@ -47,3 +47,5 @@ require("./erisevents");
 require("./jcevents");
 
 eris.connect();
+
+log("Loaded!");
