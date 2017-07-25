@@ -27,7 +27,10 @@ const defaultConfig = {
             chat: "${username}: ${message}",
             death: "*${username} ${(killer && killer.name ? \"was killed by \" + killer.name : \"died\")}*",
             connect: "**${username} connected to the server.**",
-            disconnect: "**${username} disconnected from the server.**"
+            disconnect: "**${username} disconnected from the server.**",
+            dConnect: "**Server started.**",
+            dReconnect: "**Reconnected to Discord.**",
+            dExit: "**Server stopped.**",
         }
     },
     version: "0.1.0",
