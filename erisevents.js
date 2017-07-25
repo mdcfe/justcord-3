@@ -30,18 +30,25 @@ function setTopic(topic) {
 }
 
 eris.on("ready", () => {
-    log("Connected to Discord.")
-    eris.createMessage(config.eris.id, (firstConnect ? config.gameToDiscord.dConnect : config.gameToDiscord.dReconnect)).catch((reason) => {
+    log("Connected to Discord.");
+    let msg;
+    if (firstConnect) {
+        msg = config.gameToDiscord.dConnect;
+        firstConnect = false;
+
+        // Topic updater
+        if (config.eris.topicTimeout > 0) {
+            setInterval(() => {
+                setTopic(formatTopic());
+            }, config.eris.topicTimeout);
+        }
+    } else {
+        msg = config.gameToDiscord.dReconnect;
+    }
+    eris.createMessage(config.eris.id, msg).catch((reason) => {
         log(`Could not send connection message (reason: ${reason})`);
     });
     eris.editStatus("online", { name: config.eris.playing });
-
-    // Topic updater
-    if (config.eris.topicTimeout > 0) {
-        setInterval(() => {
-            setTopic(formatTopic());
-        }, config.eris.topicTimeout);
-    }
 });
 
 eris.on("messageCreate", (_message) => {
