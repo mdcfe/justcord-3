@@ -25,13 +25,15 @@ function saveJSON(path, object) {
     return fs.writeFileSync(path, JSON.stringify(object, null, 4));
 }
 /* Versions are "compatible" if:
- * - The majors are both zero and the minors are the same
- * - The majors are the same
+ * - The majors both === zero and the minors are ===
+ * - The majors are === and b's minor >= a's minor
  */
 function isVersionCompatible(a, b) {
     let as = a.split(".");
     let bs = b.split(".");
-    return (!as[0] && !bs[0] ? as[1] === bs[1] : as[0] === bs[0]);
+    return (as[0] === 0 && !bs[0] === 0 ?
+        as[1] === bs[1] :
+        as[0] === bs[0] && bs[1] >= as[1]);
 }
 
 module.exports = {
