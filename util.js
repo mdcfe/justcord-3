@@ -24,10 +24,20 @@ function loadJSON(path) {
 function saveJSON(path, object) {
     return fs.writeFileSync(path, JSON.stringify(object, null, 4));
 }
+/* Versions are "compatible" if:
+ * - The majors are both zero and the minors are the same
+ * - The majors are the same
+ */
+function isVersionCompatible(a, b) {
+    let as = a.split(".");
+    let bs = b.split(".");
+    return (!as[0] && !bs[0] ? as[1] === bs[1] : as[0] === bs[0]);
+}
 
 module.exports = {
     evalTemplate,
     hexToRGB,
     loadJSON,
     saveJSON,
+    isVersionCompatible,
 }
