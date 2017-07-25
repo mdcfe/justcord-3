@@ -54,5 +54,5 @@ eris.on("messageCreate", (_message) => {
 
 process.on("exit", () => {
     eris.createMessage(config.eris.id, config.gameToDiscord.dExit).catch(() => log("wat"));
-    eris.editStatus("dnd", { name: "JC3MP server shutting down..." });
+    eris.editStatus("dnd", { name: "Server stopping" });
 });
