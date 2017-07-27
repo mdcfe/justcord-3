@@ -33,7 +33,7 @@ eris.on("ready", () => {
     log("Connected to Discord.");
     let msg;
     if (firstConnect) {
-        msg = config.gameToDiscord.dConnect;
+        msg = config.formatting.gameToDiscord.dConnect;
         firstConnect = false;
 
         // Topic updater
@@ -43,7 +43,7 @@ eris.on("ready", () => {
             }, config.eris.topicTimeout);
         }
     } else {
-        msg = config.gameToDiscord.dReconnect;
+        msg = config.formatting.gameToDiscord.dReconnect;
     }
     eris.createMessage(config.eris.id, msg).catch((reason) => {
         log(`Could not send connection message (reason: ${reason})`);
@@ -60,6 +60,6 @@ eris.on("messageCreate", (_message) => {
 });
 
 process.on("exit", () => {
-    eris.createMessage(config.eris.id, config.gameToDiscord.dExit).catch(() => log("wat"));
+    eris.createMessage(config.eris.id, config.formatting.gameToDiscord.dExit).catch(() => log("wat"));
     eris.editStatus("dnd", { name: "Server stopping" });
 });
