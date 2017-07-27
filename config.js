@@ -40,7 +40,8 @@ function getFullConfig() {
     const configPath = path.join(__dirname, "./config.json");
     const loadedConfig = loadJSON(configPath);
 
-    if (!util.isVersionCompatible(defaultConfig.version, loadedConfig.version)) throw new Error("Config files are not compatible. Please update your configs.");
+    if (loadedConfig.version &&
+        !util.isVersionCompatible(defaultConfig.version, loadedConfig.version)) throw new Error("Your config.json is not compatible with this version of Justcord. Please update your config.");
 
     const fullConfig = _.merge({}, defaultConfig, loadedConfig);
     saveJSON(configPath, fullConfig);
