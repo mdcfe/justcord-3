@@ -18,5 +18,5 @@
             "disconnect": "${username} disconnected from the server."
         }
     },
-    "lastUpdated": null
+    "version": "0.2.0"
 }
