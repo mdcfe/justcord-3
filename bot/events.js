@@ -1,27 +1,8 @@
-const evalTemplate = util.evalTemplate;
+const { formatTopic, formatFromDiscord } = require("./format");
+
 const hexToRGB = util.hexToRGB;
 
 let firstConnect = true;
-
-function formatFromDiscord(format, _message) {
-    const scope = {
-        username: _message.member.user.username,
-        nick: _message.member.nick || _message.member.user.username,
-        channel: _message.channel.name || "Unknown channel",
-        message: _message.content,
-        _message
-    };
-    return evalTemplate(format, scope);
-}
-
-function formatTopic() {
-    const scope = {
-        players: jcmp.players.length,
-        maxPlayers: JSON.parse(jcmp.server.config).maxPlayers,
-        jcmp
-    };
-    return evalTemplate(config.formatting.gameToDiscord.topic, scope);
-}
 
 function setTopic(topic) {
     eris.editChannel(config.eris.id, { topic }).catch((reason) => {
@@ -30,7 +11,7 @@ function setTopic(topic) {
 }
 
 eris.on("ready", () => {
-    log("Connected to Discord.");
+    log("Connected to Discord!");
     let msg;
     if (firstConnect) {
         msg = config.formatting.gameToDiscord.dConnect;
@@ -60,6 +41,8 @@ eris.on("messageCreate", (_message) => {
 });
 
 process.on("exit", () => {
-    eris.createMessage(config.eris.id, config.formatting.gameToDiscord.dExit).catch(() => log("wat"));
+    eris.createMessage(config.eris.id, config.formatting.gameToDiscord.dExit).catch((reason) => {
+        log(`Could not send shutdown message (reason: ${reason})`);
+    });
     eris.editStatus("dnd", { name: "Server stopping" });
 });

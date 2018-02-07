@@ -14,7 +14,7 @@ const defaultConfig = {
     eris: {
         token: "TOKEN GOES HERE",
         id: "CHANNEL ID GOES HERE",
-        topicTimeout: 10000,
+        topicTimeout: 300000,
         playing: "Just Cause 3 Multiplayer"
     },
     formatting: {

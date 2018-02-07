@@ -4,13 +4,13 @@
 
 // Send a message to the default channel.
 jcmp.events.Add("justcord:broadcast", async (message) => {
-    let r;
+    let result;
     try {
-        r = await eris.sendMessage(config.eris.id, message);
+        result = await eris.sendMessage(config.eris.id, message);
     } catch (e) {
-        r = e;
+        result = e;
     }
-    return r;
+    return result;
 });
 
 // Get the eris instance.

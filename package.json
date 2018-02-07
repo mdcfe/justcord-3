@@ -2,7 +2,7 @@
   "name": "justcord",
   "version": "0.2.0",
   "description": "A JC3MP-Discord bridge",
-  "main": "main.js",
+  "main": "index.js",
   "repository": {
     "url": "https://github.com/md678685/justcord-3.git",
     "type": "git"
@@ -11,11 +11,11 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^2.6.8",
-    "eris": "^0.5.1",
+    "eris": "^0.8.4",
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "eslint": "3.13.0",
+    "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "3.0.2",

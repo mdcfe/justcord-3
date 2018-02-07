@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 function evalTemplate(template, scope) {
-    with(scope) {
+    with (scope) {
         try {
             return eval(`\`${template.replace(/`/g, '\\`')}\``);
         } catch (error) {
