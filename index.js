@@ -8,46 +8,56 @@
  * Requires the chat package.
  */
 
-// External Modules
-const ErisClient = require("eris").Client;
-const debug = require("debug");
+/* eslint-disable global-require */
 
-// Listeners
-const util = require("./util");
+// Run npm install if packages dir missing
+const setupError = require("./setup");
 
-// Logging
-const log = debug("justcord");
-log.enabled = true;
+if (setupError) {
+    console.error("Justcord cannot start due to a setup error.");
+    throw setupError;
+} else {
+    // External Modules
+    const ErisClient = require("eris").Client;
+    const debug = require("debug");
 
-// Config
-const configHelper = require("./config");
+    // Listeners
+    const util = require("./util");
 
-let conf;
-try {
-    conf = configHelper();
-} catch (e) {
-    log(e);
+    // Logging
+    const log = debug("justcord");
+    log.enabled = true;
+
+    // Config
+    const configHelper = require("./config.js");
+
+    let conf;
+    try {
+        conf = configHelper();
+    } catch (e) {
+        log(e);
+    }
+
+    const config = conf || configHelper.defaultConfig;
+
+    // Initialise Eris
+    const eris = new ErisClient(config.eris.token);
+
+    // Globally exposed variables (within Justcord)
+    global.chat = jcmp.events.Call("get_chat")[0];
+    global.config = config;
+    global.eris = eris;
+    global.log = log;
+    global.util = util;
+
+    // Bot event handlers
+    require("./bot/events");
+
+    // JC3MP event handlers
+    require("./jcmp/events");
+    require("./jcmp/api");
+
+    eris.connect();
+
+    log("Loaded!");
 }
-
-const config = conf || configHelper.defaultConfig;
-
-// Initialise Eris
-const eris = new ErisClient(config.eris.token);
-
-// Globally exposed variables (within Justcord)
-global.chat = jcmp.events.Call("get_chat")[0];
-global.config = config;
-global.eris = eris;
-global.log = log;
-global.util = util;
-
-// Bot event handlers
-require("./bot/events");
-
-// JC3MP event handlers
-require("./jcmp/events");
-require("./jcmp/api");
-
-eris.connect();
-
-log("Loaded!");
