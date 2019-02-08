@@ -10,7 +10,7 @@
   "author": "md678685 <mathew678@hotmail.co.uk>",
   "license": "MIT",
   "dependencies": {
-    "debug": "^2.6.8",
+    "debug": "^2.6.9",
     "eris": "^0.8.4",
     "lodash": "^4.17.11"
   },
