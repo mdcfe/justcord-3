@@ -12,7 +12,7 @@
   "dependencies": {
     "debug": "^2.6.8",
     "eris": "^0.8.4",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "eslint": "^3.15.0",
